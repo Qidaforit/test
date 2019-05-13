@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表格基础搜索框</title>
+	</head>
+	<body>
+		<div class="all" style="width: 500px;text-align: center;">
+			<input type="text" id="txt1">
+			<input type="button" id="btn1" value="搜索">
+		</div>
+		
+		<table id="tab1" border="1px" width="500px">
+			<thead>
+				<td>学号</td>
+				<td>姓名</td>
+				<td>年龄</td>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>王一</td>
+					<td>18</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>张二</td>
+					<td>20</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>李三</td>
+					<td>23</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>朱四</td>
+					<td>14</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>攀五</td>
+					<td>25</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
+<script>
+	var oTab=document.getElementById("tab1");
+	var oTxt1=document.getElementById("txt1");
+	var oBtn1=document.getElementById("btn1");
+	
+	oBtn1.onclick=function()
+	{
+		for(var i=0;i<oTab.tBodies[0].rows.length;i++)
+		{	
+			//姓名
+			if(oTxt1.value==oTab.tBodies[0].rows[i].cells[1].innerHTML)
+			{
+				oTab.tBodies[0].rows[i].style.background="skyblue";
+			}
+			//年龄
+			else if(oTxt1.value==oTab.tBodies[0].rows[i].cells[2].innerHTML)
+			{
+				oTab.tBodies[0].rows[i].style.background="skyblue";
+			}
+			//序号
+			else if(oTxt1.value==oTab.tBodies[0].rows[i].cells[0].innerHTML)
+			{
+				oTab.tBodies[0].rows[i].style.background="skyblue";
+			}
+			else
+			{
+				oTab.tBodies[0].rows[i].style.background="";
+			}
+			
+			
+		};
+	}
+</script>

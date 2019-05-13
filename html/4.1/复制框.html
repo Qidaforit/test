@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#txt1{position: relative;}
+			#copyArea{position: absolute;top: 0px;left: 0px;opacity: 0;z-index: -10;}/*隐藏textarea*/
+		</style>
+	</head>
+	<body>
+		<input type="text" id="txt1">
+		<textarea id="copyArea"></textarea>
+		<input type="button" id="btn1" value="点击我">
+		<input type="text" id="txt2">
+	</body>
+</html>
+<script>
+	var oTxt1=document.getElementById("txt1");
+	var oTxt2=document.getElementById("txt2");
+	var oBtn1=document.getElementById("btn1");
+	var oCopy=document.getElementById("copyArea");
+	
+	oBtn1.onclick=function()
+	{
+		var waitCopy=oTxt1.value;
+		oCopy.value=waitCopy;
+		oCopy.select();//选中文本
+		document.execCommand("copy");
+	}
+</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<table id="tab1" border="1px" width="500px">
+			<thead>
+				<td>学号</td>
+				<td>姓名</td>
+				<td>年龄</td>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>王一</td>
+					<td>18</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>张二</td>
+					<td>20</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>李三</td>
+					<td>23</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
+<script>
+	//要求:使用js语言弹窗出张二这个名字
+	var oTab=document.getElementById("tab1");
+	//alert(oTab.getElementsByTagName("tbody")[0].getElementsByTagName("tr")[1].getElementsByTagName("td")[1].innerHTML);
+	alert(oTab.tBodies[0].rows[1].cells[1].innerHTML);
+	
+	//tBodies[0]是获取第一个tbody元素
+	//rows[1]是获取第二行元素
+	//cells[1]是获取第二个单元格
+	//tHead[]
+	//tFoot[]
+</script>

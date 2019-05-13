@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="demoArea">
+			<input type="button" id="btn1" value="排序">
+			<ul id="ul1">
+				<li>36</li>
+				<li>28</li>
+				<li>9</li>
+				<li>88</li>
+				<li>57</li>
+			</ul>
+		</div>
+		
+		<div class="codeArea">
+			<fieldset>
+			<legend>代码区(codeArea)</legend>
+				<br/>
+				<img src="images/从大到小排序html.jpg" alt="代码html区">
+				<img src="images/从大到小排序js.jpg" alt="代码js区">
+			</fieldset>
+		</div>
+	</body>
+</html>
+<script>
+	//实现思路:
+	//1.获取操作所需元素(obtn.oul)
+	//2.获取li的个数
+	//3.创造空数组arr		因为后续sort操作仅支持数组操作
+	//4.数组sort(function(){})从小到大排序
+	//5.再利用for循环使得从小到大的结果把结果排序好
+	var oBtn=document.getElementById("btn1");
+	var oUl=document.getElementById("ul1");
+	
+	oBtn.onclick=function()
+	{
+		var aLi=oUl.getElementsByTagName("li");
+		var arr=[];
+		for(var i=0;i<aLi.length;i++)
+		{
+			arr[i]=aLi[i];
+			// console.log(arr[i]);
+		}
+		
+		arr.sort(function(li1,li2){
+			var n1=parseInt(li1.innerHTML);
+			var n2=parseInt(li2.innerHTML);
+			return n1-n2;
+		});
+		
+		for(var j=0;j<arr.length;j++)
+		 {
+			 // alert("此时应该添加"+arr[j].innerHTML+"这个元素");
+			 oUl.appendChild(arr[j]);
+		 }
+		 
+	}
+</script>

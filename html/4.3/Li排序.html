@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Li排序</title>
+</head>
+<body>
+	<ul id="ul1">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+	<input type="button" value="转换" id="btn1">
+	<ul id="ul2">
+	
+	</ul>
+</body>
+</html>
+<script>
+	var oUl1=document.getElementById("ul1");
+	var oBtn=document.getElementById("btn1");
+	var oUl2=document.getElementById("ul2");
+
+	oBtn.onclick=function()
+	{
+		
+
+			var first=oUl1.children[0]
+			oUl1.removeChild(first);		//先把元素从原有的父级上删掉
+			oUl2.appendChild(first);		//添加到新的父级
+
+
+
+			
+			// var first=oUl1.children[0]
+			// oUl1.removeChild(first);		这步可以不要
+			// oUl2.appendChild(first);		//添加到新的父级
+		
+	}
+</script>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>旋转木马轮播图</title>
+    <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+<div class="wrap" id="wrap">
+   <div class="slide" id="slide">
+       <ul>
+           <li><a href="#"><img src="images/slidepic1.jpg" alt=""/></a></li>
+           <li><a href="#"><img src="images/slidepic2.jpg" alt=""/></a></li>
+           <li><a href="#"><img src="images/slidepic3.jpg" alt=""/></a></li>
+           <li><a href="#"><img src="images/slidepic4.jpg" alt=""/></a></li>
+           <li><a href="#"><img src="images/slidepic5.jpg" alt=""/></a></li>
+       </ul>
+       <div class="arrow" id="arrow">
+           <a href="javascript:;" class="prev"></a>
+           <a href="javascript:;" class="next"></a>
+       </div>
+   </div>
+</div>
+</body>
+</html>
+<script src="js/animate.js"></script>
+<script>
+	var wrap=document.getElementById("wrap");		//大盒子
+	var slide=document.getElementById("slide");		//装图片的盒子
+	var oUl=slide.children[0];						//ul	
+	var aLi=oUl.getElementsByTagName("li");			//li获取
+	var arrow=document.getElementById("arrow");
+	var left=arrow.children[0];
+	var right=arrow.children[1];
+	
+	wrap.onmouseover=function(){
+		// arrow.style.opacity=1;
+		animate(arrow,{'opacity':100});
+	};
+	wrap.onmouseout=function()
+	{
+		// arrow.style.opacity=0;
+		animate(arrow,{'opacity':0});
+	}
+	// alert(aLi.length);
+	 //  存储了每个图片的信息
+    var json = [
+        {   //  1
+            width:400,
+            top:20,
+            left:50,
+            opacity:0.2,
+            z:2
+        },
+        {  // 2
+            width:600,
+            top:70,
+            left:0,
+            opacity:0.8,
+            z:3
+        },
+        {   // 3
+            width:800,
+            top:100,
+            left:200,
+            opacity:1,
+            z:4
+        },
+        {  // 4
+            width:600,
+            top:70,
+            left:600,
+            opacity:0.8,
+            z:3
+        },
+        {   //5
+            width:400,
+            top:20,
+            left:750,
+            opacity:0.2,
+            z:2
+        }
+    ];
+	
+	//for循环把json数据传入
+	for(var i=0;i<aLi.length;i++)
+	{
+		aLi[i].style.width=json[i].width+"px";
+		aLi[i].style.top=json[i].top+"px";
+		aLi[i].style.left=json[i].left+"px";
+		aLi[i].style.opacity=json[i].opacity;
+		aLi[i].style.zIndex=json[i].z;
+// 		animate(aLi[i],{
+// 			"width":json[i].width;
+// 			"top":json[i].top;
+// 			"left":json[i].left;
+// 			"opacity":json[i].opacity*100;
+// 			"zIndex":json[i].z;
+// 		})
+	}
+	left.onclick=function()
+	{
+		var temp=json.shift();
+		json.push(temp);
+		for(var i=0;i<aLi.length;i++)
+		{
+			animate(aLi[i],{
+				width:json[i].width,
+				top:json[i].top,
+				left:json[i].left,
+				opacity:json[i].opacity*100,
+				zIndex:json[i].z
+			})
+		}
+	}
+	right.onclick=function()
+	{
+		var temp=json.pop();
+		json.unshift(temp);
+		for(var i=0;i<aLi.length;i++)
+		{
+			animate(aLi[i],{
+				width:json[i].width,
+				top:json[i].top,
+				left:json[i].left,
+				opacity:json[i].opacity*100,
+				zIndex:json[i].z
+			})
+		}
+	}
+</script>
